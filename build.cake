@@ -272,9 +272,14 @@ Task("PostComments")
 	    Information("There are {0} FT Layout Syntax Errors exists", fTLayoutSyntaxErrorMatch);
 	
 	
+	string comment = "Techincal Errors:" + technicalErrorMatch.ToString() + "\nSpelling Errors:" +spellingErrorMatch.ToString()+ "\nFront matter Errors:"+ frontmatterErrorMatch.ToString()+ "\nImage Alt Text Errors:"+ imageAltTextErrorMatch.ToString()+ "\nImage Size Errors:"+ imageSizeErrorMatch.ToString()+ "\nImage Name Errors:"+ imageNameErrorMatch.ToString()+ "\nFile Path Errors:"+ filePathErrorMatch.ToString()+ "\nFT Layout Syntax Errors:"+ fTLayoutSyntaxErrorMatch.ToString();
+	
+	Information(comment);
+	
+	
 	 //StartProcess(@"{curl}",new ProcessSettings{ Arguments = 'curl -H "Authorization: Token 6c19e963e5cf94de1f6ae93410d53b42e22b3bba" -X POST -d "{ \"body\": \"Update comments via CI job\" }" "https://api.github.com/repos/ElangoRajendran/my-docs/issues/12/comments"' })
             
-	StartProcess(@"{curl.exe}",new ProcessSettings{ Arguments = "curl -H \"Authorization: Token 6c19e963e5cf94de1f6ae93410d53b42e22b3bba\" -X POST -d \"{ \"body\": \"My Review comments updated-Latest\" }\" \"https://api.github.com/repos/ElangoRajendran/my-docs/issues/12/comments\"" });
+	//StartProcess(@"{curl.exe}",new ProcessSettings{ Arguments = "curl -H \"Authorization: Token 6c19e963e5cf94de1f6ae93410d53b42e22b3bba\" -X POST -d \"{ \"body\": \"My Review comments updated-Latest\" }\" \"https://api.github.com/repos/ElangoRajendran/my-docs/issues/12/comments\"" });
 });
 
 //////////////////////////////////////////////////////////////////////
