@@ -286,7 +286,7 @@ Task("PostComments")
 	{
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
 		{
-		    Credentials = new Credentials(token: "6c19e963e5cf94de1f6ae93410d53b42e22b3bba"),
+		    Credentials = new Credentials(token: "c49689ca46fd66409b87e9aa01dd4b1e166b1cef"),
 		};
 
 		var pullRequestNumber = 13;
