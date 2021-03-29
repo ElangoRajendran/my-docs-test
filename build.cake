@@ -282,16 +282,23 @@ Task("PostComments")
 	
 	 //StartProcess(@"{curl}",new ProcessSettings{ Arguments = '"curl -H "Authorization: Token 6c19e963e5cf94de1f6ae93410d53b42e22b3bba" -X POST -d "{ \"body\": \"Update comments via CI job\" }" "https://api.github.com/repos/ElangoRajendran/my-docs/issues/12/comments"' })
           
-	var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
+	try
 	{
-	    Credentials = new Credentials(token: "6c19e963e5cf94de1f6ae93410d53b42e22b3bba"),
-	};
+		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
+		{
+		    Credentials = new Credentials(token: "6c19e963e5cf94de1f6ae93410d53b42e22b3bba"),
+		};
 
-	var pullRequestNumber = 13;
-	var commentBody = "My comments";
+		var pullRequestNumber = 13;
+		var commentBody = "My comments";
 
-	github.Issue.Comment.Create("ElangoRajendran", "my-docs", pullRequestNumber, commentBody)
-	    .GetAwaiter().GetResult();
+		github.Issue.Comment.Create("ElangoRajendran", "my-docs", pullRequestNumber, commentBody)
+		    .GetAwaiter().GetResult();
+	}
+	catch(Exception ex)
+	{
+		Information(ex);
+	}
 	
 });
 
