@@ -237,7 +237,7 @@ if ($Configuration) { $cakeArguments += "-configuration=$Configuration" }
 if ($Platform) { $cakeArguments += "-platform=$Platform" }
 if ($Branch) { $cakeArguments += "-branch=$Branch" }
 if ($Targetbranch) { $cakeArguments += "-targetbranch=$Targetbranch" }
-if ($Mytoken) { $cakeArguments += "-Mytoken"=`"$Mytoken`" }
+if ($Mytoken) { $cakeArguments += -Mytoken=`"$Mytoken`" }
 if ($Verbosity) { $cakeArguments += "-verbosity=$Verbosity" }
 if ($ShowDescription) { $cakeArguments += "-showdescription" }
 if ($DryRun) { $cakeArguments += "-dryrun" }
