@@ -211,8 +211,10 @@ Task("GitHubCIReportValidation")
 Task("PostComments")
 .Does(() =>
 {
+	try
+	{
 	
-/*	// Techincal Errors
+	// Techincal Errors
 
             var technicalError = @"../cireports/spellcheck/spellcheckreport.htm";
             var technicalErrorString = FileReadText(technicalError);
@@ -273,8 +275,9 @@ Task("PostComments")
             var fTLayoutSyntaxError = @"../cireports/FTLayoutSyntaxValidation/FTStructureValidation.html";
             var fTLayoutSyntaxErrorString = FileReadText(fTLayoutSyntaxError);
             int fTLayoutSyntaxErrorMatch = Regex.Matches(fTLayoutSyntaxErrorString, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-	    Information("There are {0} FT Layout Syntax Errors exists", fTLayoutSyntaxErrorMatch); */
+	    Information("There are {0} FT Layout Syntax Errors exists", fTLayoutSyntaxErrorMatch); 
 	
+	string comment = "Techincal Errors:" + technicalErrorMatch.ToString() + "\nSpelling Errors:" +spellingErrorMatch.ToString()+ "\nFront matter Errors:"+ frontmatterErrorMatch.ToString()+ "\nImage Alt Text Errors:"+ imageAltTextErrorMatch.ToString()+ "\nImage Size Errors:"+ imageSizeErrorMatch.ToString()+ "\nImage Name Errors:"+ imageNameErrorMatch.ToString()+ "\nFile Path Errors:"+ filePathErrorMatch.ToString()+ "\nFT Layout Syntax Errors:"+ fTLayoutSyntaxErrorMatch.ToString();
 	
 	//StartProcess(@"{curl.exe}",new ProcessSettings{ Arguments = "curl -H \"Authorization: Token 6c19e963e5cf94de1f6ae93410d53b42e22b3bba\" -X POST -d \"{ \"body\": \"My Review comments updated-Latest\" }\" \"https://api.github.com/repos/ElangoRajendran/my-docs/issues/12/comments\"" });
 	
@@ -283,18 +286,16 @@ Task("PostComments")
 	
 	 //StartProcess(@"{curl}",new ProcessSettings{ Arguments = '"curl -H "Authorization: Token 6c19e963e5cf94de1f6ae93410d53b42e22b3bba" -X POST -d "{ \"body\": \"Update comments via CI job\" }" "https://api.github.com/repos/ElangoRajendran/my-docs/issues/12/comments"' })
           
-	try
-	{
+	
 		Information(Mytoken);
 		
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
-		{
-		    //Credentials = new Credentials("ElangoRajendran","Elango@22"),
+		{,
 		    Credentials = new Credentials(token: Mytoken),
 		};
 
 		var pullRequestNumber = 13;
-		var commentBody = "My comments-1";
+		var commentBody = comment;
 
 		github.Issue.Comment.Create("ElangoRajendran", "my-docs", pullRequestNumber, commentBody)
 		    .GetAwaiter().GetResult();
