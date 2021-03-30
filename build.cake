@@ -290,7 +290,7 @@ Task("PostComments")
 		Information(Mytoken);
 		
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
-		{,
+		{
 		    Credentials = new Credentials(token: Mytoken),
 		};
 
