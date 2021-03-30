@@ -287,10 +287,12 @@ Task("PostComments")
 	{
 		//Information(mytoken);
 		
+		string MyToken = ${{ secrets.Post-Comment-Token-1 }};
+		
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
 		{
 		    //Credentials = new Credentials("ElangoRajendran","Elango@22"),
-		    Credentials = new Credentials(token: ${{ secrets.Post-Comment-Token-1 }}),
+		    Credentials = new Credentials(token: MyToken),
 		};
 
 		var pullRequestNumber = 13;
