@@ -16,7 +16,7 @@ var cireports = Argument("cireports", "../cireports");
 var platform=Argument<string>("platform","");
 var sourcebranch=Argument<string>("branch","");
 var targetBranch=Argument<string>("targetbranch","");
-var mytoken=Argument<string>("mytoken","");
+//var mytoken=Argument<string>("mytoken","");
 var buildStatus = true;
 var isSpellingError=0;
 var isDocumentvalidationError=0;
@@ -285,12 +285,12 @@ Task("PostComments")
           
 	try
 	{
-		Information(mytoken);
+		//Information(mytoken);
 		
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
 		{
 		    //Credentials = new Credentials("ElangoRajendran","Elango@22"),
-		    Credentials = new Credentials(token: mytoken),
+		    Credentials = new Credentials(token: ${{ secrets.Post-Comment-Token-1 }}),
 		};
 
 		var pullRequestNumber = 13;
