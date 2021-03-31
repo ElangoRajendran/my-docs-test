@@ -49,7 +49,7 @@ Param(
 	[string]$Targetbranch,	
 	[string]$Mytoken = "",
 	[string]$RepoName,
-	[string]$PRnumber,
+	[int]$PRnumber,
     [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
     [string]$Verbosity,
     [switch]$ShowDescription,
