@@ -17,6 +17,8 @@ var platform=Argument<string>("platform","");
 var sourcebranch=Argument<string>("branch","");
 var targetBranch=Argument<string>("targetbranch","");
 var Mytoken=Argument<string>("Mytoken","");
+var RepoName=Argument<string>("RepoName","");
+var PRnumber=Argument<string>("PRnumber","");
 var buildStatus = true;
 var isSpellingError=0;
 var isDocumentvalidationError=0;
@@ -288,6 +290,8 @@ Task("PostComments")
           
 	
 		Information(Mytoken);
+		Information(RepoName);
+		Information(PRnumber);
 		
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
 		{
