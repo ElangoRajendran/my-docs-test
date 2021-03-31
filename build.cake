@@ -18,7 +18,7 @@ var sourcebranch=Argument<string>("branch","");
 var targetBranch=Argument<string>("targetbranch","");
 var Mytoken=Argument<string>("Mytoken","");
 var RepoName=Argument<string>("RepoName","");
-var PRnumber=Argument<int>(PRnumber,"");
+var PRnumber=Argument<string>("PRnumber","");
 var buildStatus = true;
 var isSpellingError=0;
 var isDocumentvalidationError=0;
@@ -298,7 +298,7 @@ Task("PostComments")
 		    Credentials = new Credentials(token: Mytoken),
 		};
 
-		int pullRequestNumber = PRnumber;
+		int pullRequestNumber = PRnumber.toInteger();
 		var commentBody = comment;
 
 		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBody)
