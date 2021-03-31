@@ -298,10 +298,10 @@ Task("PostComments")
 		    Credentials = new Credentials(token: Mytoken),
 		};
 
-		var pullRequestNumber = 13;
+		var pullRequestNumber = PRnumber;
 		var commentBody = comment;
 
-		github.Issue.Comment.Create("ElangoRajendran", "my-docs", pullRequestNumber, commentBody)
+		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBody)
 		    .GetAwaiter().GetResult();
 	}
 	catch(Exception ex)
