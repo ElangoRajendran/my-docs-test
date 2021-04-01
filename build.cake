@@ -298,7 +298,7 @@ Task("PostComments")
 		    Credentials = new Credentials(token: Mytoken),
 		};
 
-		int pullRequestNumber = PRnumber.toInteger();
+		int pullRequestNumber = Int32.Parse(PRnumber);
 		var commentBody = comment;
 
 		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBody)
