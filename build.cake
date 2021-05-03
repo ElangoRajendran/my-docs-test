@@ -216,7 +216,7 @@ Task("PostComments")
 	try
 	{
 	
-	// Techincal Errors
+/*	// Techincal Errors
 
             var technicalError = @"../cireports/spellcheck/spellcheckreport.htm";
             var technicalErrorString = FileReadText(technicalError);
@@ -277,16 +277,75 @@ Task("PostComments")
             var fTLayoutSyntaxError = @"../cireports/FTLayoutSyntaxValidation/FTStructureValidation.html";
             var fTLayoutSyntaxErrorString = FileReadText(fTLayoutSyntaxError);
             int fTLayoutSyntaxErrorMatch = Regex.Matches(fTLayoutSyntaxErrorString, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-	    Information("There are {0} FT Layout Syntax Errors exists", fTLayoutSyntaxErrorMatch); 
+	    Information("There are {0} FT Layout Syntax Errors exists", fTLayoutSyntaxErrorMatch); */
+		
+		
+	// Techincal Errors
+
+            //var technicalError = @"../cireports/spellcheck/spellcheckreport.htm";
+            var technicalErrorReportFileContent = FileReadText(@"../cireports/spellcheck/spellcheckreport.htm");
+            int matchedTechnicalErrorCount = Regex.Matches(technicalErrorReportFileContent, "<td>Technical Error</td>").Count;
+            Information("There are {0} Technical Errors exists", matchedTechnicalErrorCount);
+
+
+        // Spelling Errors
+
+            //var spellingError = @"../cireports/spellcheck/spellcheckreport.htm";
+            var spellingErrorReportFileContent = FileReadText(@"../cireports/spellcheck/spellcheckreport.htm");
+            int matchedSpellingErrorCount = Regex.Matches(spellingErrorReportFileContent, "<td>Spell Error</td>").Count;
+            Information("There are {0} Spelling Errors exists", matchedSpellingErrorCount);
 	
-	string comment = "Techincal Errors:" + technicalErrorMatch.ToString() + "\nSpelling Errors:" +spellingErrorMatch.ToString()+ "\nFront matter Errors:"+ frontmatterErrorMatch.ToString()+ "\nImage Alt Text Errors:"+ imageAltTextErrorMatch.ToString()+ "\nImage Size Errors:"+ imageSizeErrorMatch.ToString()+ "\nImage Name Errors:"+ imageNameErrorMatch.ToString()+ "\nFile Path Errors:"+ filePathErrorMatch.ToString()+ "\nFT Layout Syntax Errors:"+ fTLayoutSyntaxErrorMatch.ToString();
 	
-	//StartProcess(@"{curl.exe}",new ProcessSettings{ Arguments = "curl -H \"Authorization: Token 6c19e963e5cf94de1f6ae93410d53b42e22b3bba\" -X POST -d \"{ \"body\": \"My Review comments updated-Latest\" }\" \"https://api.github.com/repos/ElangoRajendran/my-docs/issues/12/comments\"" });
+	// Front matter Error	
+
+	    //var frontMatterErrorReportPath = @"../cireports/FrontMatterValidation/FrontMatterValidation.html";
+	    var frontMatterErrorReportFileContent = FileReadText(@"../cireports/FrontMatterValidation/FrontMatterValidation.html");
+            int matchedFrontMatterErrorCount = Regex.Matches(frontMatterErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
+            Information("There are {0} Front Matter Errors exists", matchedFrontMatterErrorCount);
 	
 	
-	//StartProcess(@"{curl}",new ProcessSettings{ Arguments = "curl" });
+	// Image Alt Text Error
+
+            //var imageAltTextError = @"../cireports/ImageValidation/AltTextValidation.html";
+            var imageAltTextErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/AltTextValidation.html");
+            int matchedImageAltTextErrorCount = Regex.Matches(imageAltTextErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
+            Information("There are {0} Image Alt Text Errors exists", matchedImageAltTextErrorCount);
+
+
+        // Image Size Error
+
+            //var imageSizeError = @"../cireports/ImageValidation/ImageSizeValidation.html";
+            var imageSizeErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/ImageSizeValidation.html");
+            int matchedImageSizeErrorCount = Regex.Matches(imageSizeErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
+            Information("There are {0} Image Size Errors exists", matchedImageSizeErrorCount);
+
+
+        // Image Name Error
+
+            //var imageNameError = @"../cireports/ImageValidation/ImageNameValidation.html";
+            var imageNameErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/ImageNameValidation.html");
+            int matchedImageNameErrorCount = Regex.Matches(imageNameErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
+            Information("There are {0} Image Name Errors exists", matchedImageNameErrorCount);
 	
-	 //StartProcess(@"{curl}",new ProcessSettings{ Arguments = '"curl -H "Authorization: Token 6c19e963e5cf94de1f6ae93410d53b42e22b3bba" -X POST -d "{ \"body\": \"Update comments via CI job\" }" "https://api.github.com/repos/ElangoRajendran/my-docs/issues/12/comments"' })
+	
+	// FilePath Validation
+
+            //var filePathError = @"../cireports/FilePathValidation/FilePathValidation.html";
+            var filePathErrorReportFileContent = FileReadText(@"../cireports/FilePathValidation/FilePathValidation.html");
+            int matchedFilePathErrorCount = Regex.Matches(filePathErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b;vertical-align:top; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
+	    Information("There are {0} File Path Errors exists", matchedFilePathErrorCount);
+	
+	
+	// FT Layout Syntax Error
+
+            //var fTLayoutSyntaxError = @"../cireports/FTLayoutSyntaxValidation/FTStructureValidation.html";
+            var fTLayoutSyntaxErrorReportFileContent = FileReadText(@"../cireports/FTLayoutSyntaxValidation/FTStructureValidation.html");
+            int matchedFTLayoutSyntaxErrorCount = Regex.Matches(fTLayoutSyntaxErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
+	    Information("There are {0} FT Layout Syntax Errors exists", matchedFTLayoutSyntaxErrorCount);
+	
+	string comment = "Techincal Error(s):" + matchedTechnicalErrorCount.ToString() + "\nSpelling Error(s):" +matchedSpellingErrorCount.ToString()+ "\nFront matter Error(s):"+ matchedFrontMatterErrorCount.ToString()+ "\nImage Alt Text Error(s):"+ matchedImageAltTextErrorCount.ToString()+ "\nImage Size Error(s):"+ matchedImageSizeErrorCount.ToString()+ "\nImage Name Error(s):"+ matchedImageNameErrorCount.ToString()+ "\nFile Path Error(s):"+ matchedFilePathErrorCount.ToString()+ "\nFT Layout Syntax Error(s):"+ matchedFTLayoutSyntaxErrorCount.ToString();
+	
+	
           
 	
 		Information(Mytoken);
@@ -299,14 +358,15 @@ Task("PostComments")
 		};
 
 		int pullRequestNumber = Int32.Parse(PRnumber);
-		var commentBody = comment;
+		var commentBodyContent = comment;
 
-		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBody)
+		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent)
 		    .GetAwaiter().GetResult();
 	}
 	catch(Exception ex)
 	{
-		Information(ex);
+		Information("Job was failed in post comment task");
+		throw new Exception(String.Format("Please fix the post comment task errors"));
 	}
 	
 });
