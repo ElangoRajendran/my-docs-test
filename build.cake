@@ -19,6 +19,7 @@ var targetBranch=Argument<string>("targetbranch","");
 var Mytoken=Argument<string>("Mytoken","");
 var RepoName=Argument<string>("RepoName","");
 var PRnumber=Argument<string>("PRnumber","");
+var CIJobNumber=Argument<string>("CIJobNumber","");
 var buildStatus = true;
 var isSpellingError=0;
 var isDocumentvalidationError=0;
@@ -345,12 +346,13 @@ Task("PostComments")
 	
 	string comment = "Techincal Error(s):" + matchedTechnicalErrorCount.ToString() + "\nSpelling Error(s):" +matchedSpellingErrorCount.ToString()+ "\nFront matter Error(s):"+ matchedFrontMatterErrorCount.ToString()+ "\nImage Alt Text Error(s):"+ matchedImageAltTextErrorCount.ToString()+ "\nImage Size Error(s):"+ matchedImageSizeErrorCount.ToString()+ "\nImage Name Error(s):"+ matchedImageNameErrorCount.ToString()+ "\nFile Path Error(s):"+ matchedFilePathErrorCount.ToString()+ "\nFT Layout Syntax Error(s):"+ matchedFTLayoutSyntaxErrorCount.ToString();
 	
-	
+	string CIJobLink = "https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString();
           
 	
 		Information(Mytoken);
 		Information(RepoName);
 		Information(PRnumber);
+		Information(CIJobNumber);
 		
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
 		{
@@ -358,10 +360,19 @@ Task("PostComments")
 		};
 
 		int pullRequestNumber = Int32.Parse(PRnumber);
-		var commentBodyContent = comment;
+		var commentBodyContent1 = comment;
+		var commentBodyContent2 = CIJobLink;
 
-		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent)
+		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent1)
 		    .GetAwaiter().GetResult();
+		
+		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent2)
+		    .GetAwaiter().GetResult();
+		
+		
+		
+		
+		
 	}
 	catch(Exception ex)
 	{
