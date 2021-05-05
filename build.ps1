@@ -50,6 +50,7 @@ Param(
 	[string]$Mytoken = "",
 	[string]$RepoName,
 	[int]$PRnumber,
+	[int]$CIJobNumber,
     [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
     [string]$Verbosity,
     [switch]$ShowDescription,
@@ -242,6 +243,7 @@ if ($Targetbranch) { $cakeArguments += "-targetbranch=$Targetbranch" }
 if ($Mytoken) { $cakeArguments += "-Mytoken=$Mytoken" }
 if ($RepoName) { $cakeArguments += "-RepoName=$RepoName" }
 if ($PRnumber) { $cakeArguments += "-PRnumber=$PRnumber" }
+if ($CIJobNumber) { $cakeArguments += "-CIJobNumber=$CIJobNumber" }
 if ($Verbosity) { $cakeArguments += "-verbosity=$Verbosity" }
 if ($ShowDescription) { $cakeArguments += "-showdescription" }
 if ($DryRun) { $cakeArguments += "-dryrun" }
