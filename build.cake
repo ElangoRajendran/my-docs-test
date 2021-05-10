@@ -344,9 +344,9 @@ Task("PostComments")
             int matchedFTLayoutSyntaxErrorCount = Regex.Matches(fTLayoutSyntaxErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
 	    Information("There are {0} FT Layout Syntax Errors exists", matchedFTLayoutSyntaxErrorCount);
 	
-	string comment = "**Techincal Error(s)**:" + matchedTechnicalErrorCount.ToString() + "\n**Spelling Error(s)**:" +matchedSpellingErrorCount.ToString()+ "\n**Front matter Error(s)**:"+ matchedFrontMatterErrorCount.ToString()+ "\n**Image Alt Text Error(s)**:"+ matchedImageAltTextErrorCount.ToString()+ "\n**Image Size Error(s)**:"+ matchedImageSizeErrorCount.ToString()+ "\n**Image Name Error(s)**:"+ matchedImageNameErrorCount.ToString()+ "\n**File Path Error(s)**:"+ matchedFilePathErrorCount.ToString()+ "\n**FT Layout Syntax Error(s)**:"+ matchedFTLayoutSyntaxErrorCount.ToString();
+	string comment =  "**Artifact Location**: https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString() + "\n**Techincal Error(s)**:" + matchedTechnicalErrorCount.ToString() + "\n**Spelling Error(s)**:" +matchedSpellingErrorCount.ToString()+ "\n**Front matter Error(s)**:"+ matchedFrontMatterErrorCount.ToString()+ "\n**Image Alt Text Error(s)**:"+ matchedImageAltTextErrorCount.ToString()+ "\n**Image Size Error(s)**:"+ matchedImageSizeErrorCount.ToString()+ "\n**Image Name Error(s)**:"+ matchedImageNameErrorCount.ToString()+ "\n**File Path Error(s)**:"+ matchedFilePathErrorCount.ToString()+ "\n**FT Layout Syntax Error(s)**:"+ matchedFTLayoutSyntaxErrorCount.ToString();
 	
-	string CIJobLink = "**Artifact Location**: https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString();
+	//string CIJobLink = "**Artifact Location**: https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString();
           
 	
 		Information(Mytoken);
@@ -361,13 +361,13 @@ Task("PostComments")
 
 		int pullRequestNumber = Int32.Parse(PRnumber);
 		var commentBodyContent1 = comment;
-		var commentBodyContent2 = CIJobLink;
+		//var commentBodyContent2 = CIJobLink;
 
 		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent1)
 		    .GetAwaiter().GetResult();
 		
-		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent2)
-		    .GetAwaiter().GetResult();
+		//github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent2)
+		   // .GetAwaiter().GetResult();
 		
 		
 		
