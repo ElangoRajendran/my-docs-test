@@ -346,7 +346,7 @@ Task("PostComments")
 	
 	string comment = "Techincal Error(s):" + matchedTechnicalErrorCount.ToString() + "\nSpelling Error(s):" +matchedSpellingErrorCount.ToString()+ "\nFront matter Error(s):"+ matchedFrontMatterErrorCount.ToString()+ "\nImage Alt Text Error(s):"+ matchedImageAltTextErrorCount.ToString()+ "\nImage Size Error(s):"+ matchedImageSizeErrorCount.ToString()+ "\nImage Name Error(s):"+ matchedImageNameErrorCount.ToString()+ "\nFile Path Error(s):"+ matchedFilePathErrorCount.ToString()+ "\nFT Layout Syntax Error(s):"+ matchedFTLayoutSyntaxErrorCount.ToString();
 	
-	string CIJobLink = "https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString();
+	string CIJobLink = "Artifact Location:" "https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString();
           
 	
 		Information(Mytoken);
