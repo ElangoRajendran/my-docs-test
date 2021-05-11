@@ -217,138 +217,55 @@ Task("PostComments")
 	try
 	{
 	
-/*	// Techincal Errors
-
-            var technicalError = @"../cireports/spellcheck/spellcheckreport.htm";
-            var technicalErrorString = FileReadText(technicalError);
-            int technicalErrorMatch = Regex.Matches(technicalErrorString, "<td>Technical Error</td>").Count;
-            Information("There are {0} Technical Errors exists", technicalErrorMatch);
-
-
-        // Spelling Errors
-
-            var spellingError = @"../cireports/spellcheck/spellcheckreport.htm";
-            var spellingErrorString = FileReadText(spellingError);
-            int spellingErrorMatch = Regex.Matches(spellingErrorString, "<td>Spell Error</td>").Count;
-            Information("There are {0} Spelling Errors exists", spellingErrorMatch);
-	
-	
-	// Front matter Error	
-
-	    var frontMatterErrorReportPath = @"../cireports/FrontMatterValidation/FrontMatterValidation.html";
-	    var frontmatterErrorString = FileReadText(frontMatterErrorReportPath);
-            int frontmatterErrorMatch = Regex.Matches(frontmatterErrorString, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-            Information("There are {0} Front Matter Errors exists", frontmatterErrorMatch);
-	
-	
-	// Image Alt Text Error
-
-            var imageAltTextError = @"../cireports/ImageValidation/AltTextValidation.html";
-            var imageAltTextErrorString = FileReadText(imageAltTextError);
-            int imageAltTextErrorMatch = Regex.Matches(imageAltTextErrorString, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-            Information("There are {0} Image Alt Text Errors exists", imageAltTextErrorMatch);
-
-
-        // Image Size Error
-
-            var imageSizeError = @"../cireports/ImageValidation/ImageSizeValidation.html";
-            var imageSizeErrorString = FileReadText(imageSizeError);
-            int imageSizeErrorMatch = Regex.Matches(imageSizeErrorString, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-            Information("There are {0} Image Size Errors exists", imageSizeErrorMatch);
-
-
-        // Image Name Error
-
-            var imageNameError = @"../cireports/ImageValidation/ImageNameValidation.html";
-            var imageNameErrorString = FileReadText(imageNameError);
-            int imageNameErrorMatch = Regex.Matches(imageNameErrorString, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-            Information("There are {0} Image Name Errors exists", imageNameErrorMatch);
-	
-	
-	// FilePath Validation
-
-            var filePathError = @"../cireports/FilePathValidation/FilePathValidation.html";
-            var filePathErrorString = FileReadText(filePathError);
-            int filePathErrorMatch = Regex.Matches(filePathErrorString, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b;vertical-align:top; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-	    Information("There are {0} File Path Errors exists", filePathErrorMatch);
-	
-	
-	// FT Layout Syntax Error
-
-            var fTLayoutSyntaxError = @"../cireports/FTLayoutSyntaxValidation/FTStructureValidation.html";
-            var fTLayoutSyntaxErrorString = FileReadText(fTLayoutSyntaxError);
-            int fTLayoutSyntaxErrorMatch = Regex.Matches(fTLayoutSyntaxErrorString, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-	    Information("There are {0} FT Layout Syntax Errors exists", fTLayoutSyntaxErrorMatch); */
-		
-		
 	// Techincal Errors
-
-            //var technicalError = @"../cireports/spellcheck/spellcheckreport.htm";
             var technicalErrorReportFileContent = FileReadText(@"../cireports/spellcheck/spellcheckreport.htm");
             int matchedTechnicalErrorCount = Regex.Matches(technicalErrorReportFileContent, "<td>Technical Error</td>").Count;
             Information("There are {0} Technical Errors exists", matchedTechnicalErrorCount);
 
 
         // Spelling Errors
-
-            //var spellingError = @"../cireports/spellcheck/spellcheckreport.htm";
             var spellingErrorReportFileContent = FileReadText(@"../cireports/spellcheck/spellcheckreport.htm");
             int matchedSpellingErrorCount = Regex.Matches(spellingErrorReportFileContent, "<td>Spell Error</td>").Count;
             Information("There are {0} Spelling Errors exists", matchedSpellingErrorCount);
 	
 	
 	// Front matter Error	
-
-	    //var frontMatterErrorReportPath = @"../cireports/FrontMatterValidation/FrontMatterValidation.html";
 	    var frontMatterErrorReportFileContent = FileReadText(@"../cireports/FrontMatterValidation/FrontMatterValidation.html");
             int matchedFrontMatterErrorCount = Regex.Matches(frontMatterErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
             Information("There are {0} Front Matter Errors exists", matchedFrontMatterErrorCount);
 	
 	
 	// Image Alt Text Error
-
-            //var imageAltTextError = @"../cireports/ImageValidation/AltTextValidation.html";
             var imageAltTextErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/AltTextValidation.html");
             int matchedImageAltTextErrorCount = Regex.Matches(imageAltTextErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
             Information("There are {0} Image Alt Text Errors exists", matchedImageAltTextErrorCount);
 
 
         // Image Size Error
-
-            //var imageSizeError = @"../cireports/ImageValidation/ImageSizeValidation.html";
             var imageSizeErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/ImageSizeValidation.html");
             int matchedImageSizeErrorCount = Regex.Matches(imageSizeErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
             Information("There are {0} Image Size Errors exists", matchedImageSizeErrorCount);
 
 
         // Image Name Error
-
-            //var imageNameError = @"../cireports/ImageValidation/ImageNameValidation.html";
             var imageNameErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/ImageNameValidation.html");
             int matchedImageNameErrorCount = Regex.Matches(imageNameErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
             Information("There are {0} Image Name Errors exists", matchedImageNameErrorCount);
 	
 	
 	// FilePath Validation
-
-            //var filePathError = @"../cireports/FilePathValidation/FilePathValidation.html";
             var filePathErrorReportFileContent = FileReadText(@"../cireports/FilePathValidation/FilePathValidation.html");
             int matchedFilePathErrorCount = Regex.Matches(filePathErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b;vertical-align:top; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
 	    Information("There are {0} File Path Errors exists", matchedFilePathErrorCount);
 	
 	
 	// FT Layout Syntax Error
-
-            //var fTLayoutSyntaxError = @"../cireports/FTLayoutSyntaxValidation/FTStructureValidation.html";
             var fTLayoutSyntaxErrorReportFileContent = FileReadText(@"../cireports/FTLayoutSyntaxValidation/FTStructureValidation.html");
             int matchedFTLayoutSyntaxErrorCount = Regex.Matches(fTLayoutSyntaxErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
 	    Information("There are {0} FT Layout Syntax Errors exists", matchedFTLayoutSyntaxErrorCount);
 	
 	string comment =  "**Artifact Location**: https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString() + "\n**Techincal Error(s)**: " + matchedTechnicalErrorCount.ToString() + "\n**Spelling Error(s)**: " +matchedSpellingErrorCount.ToString()+ "\n**Front matter Error(s)**: "+ matchedFrontMatterErrorCount.ToString()+ "\n**Image Alt Text Error(s)**: "+ matchedImageAltTextErrorCount.ToString()+ "\n**Image Size Error(s)**: "+ matchedImageSizeErrorCount.ToString()+ "\n**Image Name Error(s)**: "+ matchedImageNameErrorCount.ToString()+ "\n**File Path Error(s)**: "+ matchedFilePathErrorCount.ToString()+ "\n**FT Layout Syntax Error(s)**: "+ matchedFTLayoutSyntaxErrorCount.ToString();
-	
-	//string CIJobLink = "**Artifact Location**: https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString();
-          
-	
+
 		Information(Mytoken);
 		Information(RepoName);
 		Information(PRnumber);
@@ -360,18 +277,10 @@ Task("PostComments")
 		};
 
 		int pullRequestNumber = Int32.Parse(PRnumber);
-		var commentBodyContent1 = comment;
-		//var commentBodyContent2 = CIJobLink;
+		var commentBodyContent = comment;
 
-		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent1)
-		    .GetAwaiter().GetResult();
-		
-		//github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent2)
-		   // .GetAwaiter().GetResult();
-		
-		
-		
-		
+		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent)
+		    .GetAwaiter().GetResult();		
 		
 	}
 	catch(Exception ex)
