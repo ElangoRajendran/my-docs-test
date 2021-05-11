@@ -48,8 +48,8 @@ Param(
 	[string]$Branch,
 	[string]$Targetbranch,	
 	[string]$Mytoken = "",
-	[string]$RepoName,
-	[int]$PRnumber,
+	[string]$Repository_Name,
+	[int]$PullRequest_Number,
 	[int]$CIJobNumber,
     [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
     [string]$Verbosity,
@@ -241,8 +241,8 @@ if ($Platform) { $cakeArguments += "-platform=$Platform" }
 if ($Branch) { $cakeArguments += "-branch=$Branch" }
 if ($Targetbranch) { $cakeArguments += "-targetbranch=$Targetbranch" }
 if ($Mytoken) { $cakeArguments += "-Mytoken=$Mytoken" }
-if ($RepoName) { $cakeArguments += "-RepoName=$RepoName" }
-if ($PRnumber) { $cakeArguments += "-PRnumber=$PRnumber" }
+if ($Repository_Name) { $cakeArguments += "-Repository_Name=$Repository_Name" }
+if ($PullRequest_Number) { $cakeArguments += "-PullRequest_Number=$PullRequest_Number" }
 if ($CIJobNumber) { $cakeArguments += "-CIJobNumber=$CIJobNumber" }
 if ($Verbosity) { $cakeArguments += "-verbosity=$Verbosity" }
 if ($ShowDescription) { $cakeArguments += "-showdescription" }
