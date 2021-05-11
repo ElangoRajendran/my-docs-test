@@ -17,8 +17,8 @@ var platform=Argument<string>("platform","");
 var sourcebranch=Argument<string>("branch","");
 var targetBranch=Argument<string>("targetbranch","");
 var Mytoken=Argument<string>("Mytoken","");
-var RepoName=Argument<string>("RepoName","");
-var PRnumber=Argument<string>("PRnumber","");
+var Repository_Name=Argument<string>("Repository_Name","");
+var PullRequest_Number=Argument<string>("PullRequest_Number","");
 var CIJobNumber=Argument<string>("CIJobNumber","");
 var buildStatus = true;
 var isSpellingError=0;
@@ -264,11 +264,11 @@ Task("PostComments")
             int matchedFTLayoutSyntaxErrorCount = Regex.Matches(fTLayoutSyntaxErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
 	    Information("There are {0} FT Layout Syntax Errors exists", matchedFTLayoutSyntaxErrorCount);
 	
-	string comment =  "**Artifact Location**: https://github.com/ElangoRajendran/"+ RepoName.ToString() +"/actions/runs/"+ CIJobNumber.ToString() + "\n**Techincal Error(s)**: " + matchedTechnicalErrorCount.ToString() + "\n**Spelling Error(s)**: " +matchedSpellingErrorCount.ToString()+ "\n**Front matter Error(s)**: "+ matchedFrontMatterErrorCount.ToString()+ "\n**Image Alt Text Error(s)**: "+ matchedImageAltTextErrorCount.ToString()+ "\n**Image Size Error(s)**: "+ matchedImageSizeErrorCount.ToString()+ "\n**Image Name Error(s)**: "+ matchedImageNameErrorCount.ToString()+ "\n**File Path Error(s)**: "+ matchedFilePathErrorCount.ToString()+ "\n**FT Layout Syntax Error(s)**: "+ matchedFTLayoutSyntaxErrorCount.ToString();
+	string comment =  "**Artifact Location**: https://github.com/ElangoRajendran/"+ Repository_Name.ToString() +"/actions/runs/"+ CIJobNumber.ToString() + "\n**Techincal Error(s)**: " + matchedTechnicalErrorCount.ToString() + "\n**Spelling Error(s)**: " +matchedSpellingErrorCount.ToString()+ "\n**Front matter Error(s)**: "+ matchedFrontMatterErrorCount.ToString()+ "\n**Image Alt Text Error(s)**: "+ matchedImageAltTextErrorCount.ToString()+ "\n**Image Size Error(s)**: "+ matchedImageSizeErrorCount.ToString()+ "\n**Image Name Error(s)**: "+ matchedImageNameErrorCount.ToString()+ "\n**File Path Error(s)**: "+ matchedFilePathErrorCount.ToString()+ "\n**FT Layout Syntax Error(s)**: "+ matchedFTLayoutSyntaxErrorCount.ToString();
 
 		Information(Mytoken);
-		Information(RepoName);
-		Information(PRnumber);
+		Information(Repository_Name);
+		Information(PullRequest_Number);
 		Information(CIJobNumber);
 		
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
@@ -276,10 +276,10 @@ Task("PostComments")
 		    Credentials = new Credentials(token: Mytoken),
 		};
 
-		int pullRequestNumber = Int32.Parse(PRnumber);
+		int pullRequestNumber = Int32.Parse(PullRequest_Number);
 		var commentBodyContent = comment;
 
-		github.Issue.Comment.Create("ElangoRajendran", RepoName, pullRequestNumber, commentBodyContent)
+		github.Issue.Comment.Create("ElangoRajendran", Repository_Name, pullRequestNumber, commentBodyContent)
 		    .GetAwaiter().GetResult();		
 		
 	}
