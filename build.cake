@@ -205,6 +205,7 @@ Task("GitHubCIReportValidation")
 	}
 	catch(Exception ex)
 	{        
+		Information(ex.ToString());
 		Information("Job was failed due to changed documents have spelling error or document validation errors");
 		throw new Exception(String.Format("Please fix the documentation errors"));
 	}	
@@ -265,6 +266,7 @@ Task("PostComments")
 	}
 	catch(Exception ex)
 	{
+		Information(ex.ToString());
 		Information("Job was failed in post comments task");
 		throw new Exception(String.Format("Please fix the post comment task errors"));
 	}
