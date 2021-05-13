@@ -205,9 +205,9 @@ Task("GitHubCIReportValidation")
 	}
 	catch(Exception ex)
 	{        
+		Information("CI Job got failed with the PostComments task");
 		Information(ex.ToString());
-		Information("CI Job was failed due to changed documents have spelling error or document validation errors");
-		throw new Exception(String.Format("Please fix the documentation errors"));
+		throw new Exception(String.Format("Check and fix the exception that occurred with the PostComments task"));
 	}	
 		
 });
