@@ -220,49 +220,34 @@ Task("PostComments")
 	// Techincal Errors
             var technicalErrorReportFileContent = FileReadText(@"../cireports/spellcheck/spellcheckreport.htm");
             int matchedTechnicalErrorCount = Regex.Matches(technicalErrorReportFileContent, "<td>Technical Error</td>").Count;
-            Information("There are {0} Technical Errors exists", matchedTechnicalErrorCount);
-
 
         // Spelling Errors
             var spellingErrorReportFileContent = FileReadText(@"../cireports/spellcheck/spellcheckreport.htm");
-            int matchedSpellingErrorCount = Regex.Matches(spellingErrorReportFileContent, "<td>Spell Error</td>").Count;
-            Information("There are {0} Spelling Errors exists", matchedSpellingErrorCount);
-	
+            int matchedSpellingErrorCount = Regex.Matches(spellingErrorReportFileContent, "<td>Spell Error</td>").Count;	
 	
 	// Front matter Error	
 	    var frontMatterErrorReportFileContent = FileReadText(@"../cireports/FrontMatterValidation/FrontMatterValidation.html");
-            int matchedFrontMatterErrorCount = Regex.Matches(frontMatterErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-            Information("There are {0} Front Matter Errors exists", matchedFrontMatterErrorCount);
-	
+            int matchedFrontMatterErrorCount = Regex.Matches(frontMatterErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;	
 	
 	// Image Alt Text Error
             var imageAltTextErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/AltTextValidation.html");
             int matchedImageAltTextErrorCount = Regex.Matches(imageAltTextErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-            Information("There are {0} Image Alt Text Errors exists", matchedImageAltTextErrorCount);
-
-
+            
         // Image Size Error
             var imageSizeErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/ImageSizeValidation.html");
             int matchedImageSizeErrorCount = Regex.Matches(imageSizeErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-            Information("There are {0} Image Size Errors exists", matchedImageSizeErrorCount);
-
 
         // Image Name Error
             var imageNameErrorReportFileContent = FileReadText(@"../cireports/ImageValidation/ImageNameValidation.html");
             int matchedImageNameErrorCount = Regex.Matches(imageNameErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-            Information("There are {0} Image Name Errors exists", matchedImageNameErrorCount);
-	
 	
 	// FilePath Validation
             var filePathErrorReportFileContent = FileReadText(@"../cireports/FilePathValidation/FilePathValidation.html");
             int matchedFilePathErrorCount = Regex.Matches(filePathErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b;vertical-align:top; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-	    Information("There are {0} File Path Errors exists", matchedFilePathErrorCount);
-	
 	
 	// FT Layout Syntax Error
             var fTLayoutSyntaxErrorReportFileContent = FileReadText(@"../cireports/FTLayoutSyntaxValidation/FTStructureValidation.html");
             int matchedFTLayoutSyntaxErrorCount = Regex.Matches(fTLayoutSyntaxErrorReportFileContent, "<tr><td style = 'border: 2px solid #416187;  color: #264c6b; padding:10px; border-collapse:collapse; border-bottom-width: 1px;'>").Count;
-	    Information("There are {0} FT Layout Syntax Errors exists", matchedFTLayoutSyntaxErrorCount);
 	
 	string comment =  "**Artifact Location**: https://github.com/ElangoRajendran/"+ Repository_Name.ToString() +"/actions/runs/"+ CIJobNumber.ToString() + "\n**Techincal Error(s)**: " + matchedTechnicalErrorCount.ToString() + "\n**Spelling Error(s)**: " +matchedSpellingErrorCount.ToString()+ "\n**Front matter Error(s)**: "+ matchedFrontMatterErrorCount.ToString()+ "\n**Image Alt Text Error(s)**: "+ matchedImageAltTextErrorCount.ToString()+ "\n**Image Size Error(s)**: "+ matchedImageSizeErrorCount.ToString()+ "\n**Image Name Error(s)**: "+ matchedImageNameErrorCount.ToString()+ "\n**File Path Error(s)**: "+ matchedFilePathErrorCount.ToString()+ "\n**FT Layout Syntax Error(s)**: "+ matchedFTLayoutSyntaxErrorCount.ToString();
 
