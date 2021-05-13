@@ -266,11 +266,6 @@ Task("PostComments")
 	
 	string comment =  "**Artifact Location**: https://github.com/ElangoRajendran/"+ Repository_Name.ToString() +"/actions/runs/"+ CIJobNumber.ToString() + "\n**Techincal Error(s)**: " + matchedTechnicalErrorCount.ToString() + "\n**Spelling Error(s)**: " +matchedSpellingErrorCount.ToString()+ "\n**Front matter Error(s)**: "+ matchedFrontMatterErrorCount.ToString()+ "\n**Image Alt Text Error(s)**: "+ matchedImageAltTextErrorCount.ToString()+ "\n**Image Size Error(s)**: "+ matchedImageSizeErrorCount.ToString()+ "\n**Image Name Error(s)**: "+ matchedImageNameErrorCount.ToString()+ "\n**File Path Error(s)**: "+ matchedFilePathErrorCount.ToString()+ "\n**FT Layout Syntax Error(s)**: "+ matchedFTLayoutSyntaxErrorCount.ToString();
 
-		Information(Mytoken);
-		Information(Repository_Name);
-		Information(PullRequest_Number);
-		Information(CIJobNumber);
-		
 		var github = new GitHubClient(new ProductHeaderValue("ElangoRajendran"))
 		{
 		    Credentials = new Credentials(token: Mytoken),
@@ -285,7 +280,7 @@ Task("PostComments")
 	}
 	catch(Exception ex)
 	{
-		Information("Job was failed in post comment task");
+		Information("Job was failed in post comments task");
 		throw new Exception(String.Format("Please fix the post comment task errors"));
 	}
 	
