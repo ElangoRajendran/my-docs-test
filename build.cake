@@ -205,9 +205,9 @@ Task("GitHubCIReportValidation")
 	}
 	catch(Exception ex)
 	{        
-		Information("CI Job got failed with the PostComments task");
+		Information("CI Job got failed with the GitHubCIReportValidation task");
 		Information(ex.ToString());
-		throw new Exception(String.Format("Check and fix the exception that occurred with the PostComments task"));
+		throw new Exception(String.Format("Check and fix the exception that occurred with the GitHubCIReportValidation task"));
 	}	
 		
 });
@@ -266,9 +266,9 @@ Task("PostComments")
 	}
 	catch(Exception ex)
 	{
+		Information("CI Job got failed with the PostComments task");
 		Information(ex.ToString());
-		Information("CI Job was failed in post comments task");
-		throw new Exception(String.Format("Please fix the post comment task errors"));
+		throw new Exception(String.Format("Check and fix the exception that occurred with the PostComments task"));
 	}
 	
 });
